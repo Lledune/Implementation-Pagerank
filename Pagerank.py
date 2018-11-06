@@ -191,13 +191,17 @@ def pageRankItEpsilon(G, alpha = 0.85, eps = 0.00000001):
 alphaList = [0.1,0.3,0.5,0.85] #Number of iterations needed : [5,7,8,10]
 mseAlpha = []
 
+    
 for alpha in alphaList:
     mseAlpha.append(pageRankItEpsilon(G, alpha))
-    
+print("iterations : \n")
+
+for i in range(0,4):
+    print(alphaList[i], "=", mseAlpha[i][1])
     
 
 #Checking the results, it seems that the order of the pages wont change much but some things are noticeable here. 
-#First, the values tend to be bigger as alpha grows. 
+#First, the values tend to be bigger as alpha grows.
 #Second, the gap between low values and higher values is bigger, this could help with the ranking.
 #Third, the number of iterations go up as alpha grows so it would mean more time to process but it seemed reasonable as the iterations went from 5 to 10 (0.1 vs 0.85). 
 #0.85 is probably a popular choice because of these reasons. 
