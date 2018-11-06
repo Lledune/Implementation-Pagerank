@@ -1,3 +1,15 @@
+# 1.1 #######################################
+# =============================================================================
+# 1.1	Pagerank is a very useful algorithm that is used to assign a rank to each nodes 
+# by the use of a random surfer on the graph. We just have to look at how well Google 
+# performed back when they first implemented it. To prevent the surfer to get stuck and 
+# make it switch from node to node more smoothly we had a low probability (alpha/n) to 
+# jump from current node to any other node with an uniform probability. 
+# The algorithm is very useful for search engines where they assign a rank to each page to know 
+# which pages should be shown first in the search. It also provides a fast algorithm for approximating the PageRank vector. 
+# =============================================================================
+
+
 # 1.2 #######################################
 #First is iterative method, then exact method
 
@@ -86,8 +98,27 @@ def MSE(eigV, v, N):
 
 mse = MSE(eigV, v, nNodes)
 
+# 1.2 ############################### Comments
+# The matrix we have used in eigenvector computation is of "high" dimension (not quite like the ones used by Google but still) and that 
+# makes the spectral decomposition hard to compute because we have a lot of 0's in the matrix. Thus the values are not exactly the same (at least that is my interpretation of why they differ).
+# But overall, an mse of 0.00000008 seems small enough to say that both our implementations are very similar, even if the iteration method seems better suited for high dimension work.
+# Also, even tough our google matrix is stochastic (as we checked for it) is 1.41, not 1. The property says that the largest value should be 1, thus showing that the spectral decomposition wasn't 
+# performed 100% accurately, however i did not find a way to compensate for this other than normalizing the vector by their L1 norm.
 
-#1.4 ###############################    
+# 1.3 ###############################
+# =============================================================================
+# The power method (iterative method) had some advantages, like the parameter alpha for convergence rate, 
+# the convergence is independant of matrix dimension, it only stores in a single vector. It is also accurate (no substractions) 
+# and very simple. 
+# The matrix that will be dealt with will be immense because we are analyzing millions of pages, 
+# thus we need an efficient way to calculate the eigenvector of a square matrix with very high dimension. 
+# It is very effective because we do not have to compute a matrix decomposition which is nearly impossible for 
+# high dimensionnal matrices with very few values. The downside is that we are only able to compute the largest eigenvector with 
+# the iterative method. We can also say that having control on alpha is very good because it allows us to have control on the 
+# speed of convergence. 
+# =============================================================================
+
+# 1.4 ###############################    
 
 
 #Epsilon is the threshold
@@ -129,24 +160,25 @@ def pageRankItEpsilon(G, alpha = 0.85, eps = 0.00000001):
     
     return ret
 
-alphaList = [0.1,0.3,0.5,0.85]
+alphaList = [0.1,0.3,0.5,0.85] #Number of iterations needed : [5,7,8,10]
 mseAlpha = []
 
 for alpha in alphaList:
     mseAlpha.append(pageRankItEpsilon(G, alpha))
     
+    
+
 #Checking the results, it seems that the order of the pages wont change much but some things are noticeable here. 
 #First, the values tend to be bigger as alpha grows. 
 #Second, the gap between low values and higher values is bigger, this could help with the ranking.
-#Third, the number of iterations go up as alpha grows so it would mean more time to process. 
+#Third, the number of iterations go up as alpha grows so it would mean more time to process but it seemed reasonable as the iterations went from 5 to 10 (0.1 vs 0.85). 
+#0.85 is probably a popular choice because of these reasons. 
+#Alpha/n gives a smoother walk as we add the teleportation
     
-####################################
-#The matrix we have used in eigenvector computation is of "high" dimension (not quite like the ones used by Google but still) and that 
-#makes the spectral decomposition hard to compute because we have a lot of 0's in the matrix. Thus the values are not exactly the same (at least that is my interpretation of why they differ).
-#But overall, an mse of 0.00000008 seems small enough to say that both our implementations are very similar, even if the iteration method seems better suited for high dimension work.
-#Also, even tough our google matrix is stochastic (as we checked for it) is 1.41, not 1. The property says that the largest value should be 1, thus showing that the spectral decomposition wasn't 
-#performed 100% accurately, however i did not find a way to compensate for this other than normalizing the vector by their L1 norm.
 
-
-
+# 1.5 #################################
+# Spectral theory is different, asymmetric matrix may not be diagonalizable.
+# Eigenvectors may not be orthogonal
+# probability of vertices can vary
+# Very slow to converge to distribution 
 
