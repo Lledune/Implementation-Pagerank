@@ -1,5 +1,6 @@
 #Disclaimer : The algorithm was implemented here to study its behaviour, and was used on a graph automatically generated 
 # by using the networkx package from python. 
+#TODO : add plots of results
 
 #QUESTIONS ANSWERED : 
 
