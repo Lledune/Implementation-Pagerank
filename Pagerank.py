@@ -1,3 +1,6 @@
+#Disclaimer : The algorithm was implemented here to study its behaviour, and was used on a graph automatically generated 
+# by using the networkx package from python. 
+    
 # 1.1 #######################################
 # =============================================================================
 # 1.1	Pagerank is a very useful algorithm that is used to assign a rank to each nodes 
