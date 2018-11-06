@@ -120,9 +120,9 @@ eigV = pageRankEig(G)
 #Length must be = 
 def MSE(eigV, v, N):
     mseArr = np.zeros(N)
-    for i in range(0, nNodes):
+    for i in range(0, N):
         mseArr[i] = (eigV[i] - v[i])**2
-    mse = np.sum(mseArr)/nNodes #8.729242231093588e-08
+    mse = np.sum(mseArr)/N #8.729242231093588e-08
     return mse
 
 mse = MSE(eigV, v, nNodes)
@@ -214,4 +214,5 @@ for i in range(0,4):
 # Eigenvectors may not be orthogonal
 # probability of vertices can vary
 # Very slow to converge to distribution 
+
 
