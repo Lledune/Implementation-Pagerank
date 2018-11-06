@@ -1,5 +1,30 @@
 #Disclaimer : The algorithm was implemented here to study its behaviour, and was used on a graph automatically generated 
 # by using the networkx package from python. 
+
+#QUESTIONS ANSWERED : 
+
+# =============================================================================
+# Question 1.1
+# 
+# PageRank is a method for ranking nodes. Explain why it is so popular and why it is useful.
+# Question 1.2
+# 
+# Implement iterative and exact algebraic versions of the PageRank algorithm. Use an undirected Barabasi-Albert random network on 1000 nodes and compare the answers using Mean Squared Error (L2 norm of the difference between true and estimated vectors). Use α=0.85
+# 
+# .
+# Question 1.3
+# 
+# What are the advantages of the iterative versus the exact methods for calculating PageRank?
+# Question 1.4
+# 
+# Using the iterative version, calculate the PageRank for a range of α
+# values between 0 and 1. How does the choice of alpha influence the results (the overall ranking and the number of iterations)? Why do you think α=0.85
+# 
+# is a popular choice?
+# Question 1.5
+# 
+# List the problems that can arise when calculating the PageRank on directed graphs and explain how you might deal with these in practice. Generate a directed scale-free graph and show how the pageRank changes between the directed and undirected versions of the graph. Explain your observations.
+# =============================================================================
     
 # 1.1 #######################################
 # =============================================================================
